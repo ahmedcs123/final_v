@@ -1,0 +1,479 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - Vines Trading{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50 pb-12">
+    <!-- Dashboard Header -->
+    <div class="bg-white shadow sticky top-[var(--header-height,80px)] z-30">
+        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-800">Dashboard</h1>
+                <p class="text-sm text-gray-500">Welcome, <span class="font-bold text-primary">{{ user.username
+                        }}</span></p>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                {% if user.role == 'super_admin' %}
+                <a href="/admin/users"
+                    class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition flex items-center shadow-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    Manage Users
+                </a>
+                {% endif %}
+                <a href="/admin/logout"
+                    class="bg-red-50 text-red-600 border border-red-200 px-4 py-2 rounded-lg hover:bg-red-100 transition flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    Logout
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-8">
+
+        <!-- Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-gradient-to-r from-primary to-primary-light rounded-xl shadow-lg p-6 text-white transform hover:scale-[1.01] transition-transform cursor-pointer"
+                onclick="switchTab('products')">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="text-3xl font-bold">{{ products|length }}</h3>
+                        <p class="text-white/80">Total Products</p>
+                    </div>
+                    <div class="bg-white/20 p-3 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow border border-gray-100 p-6 transform hover:scale-[1.01] transition-transform cursor-pointer"
+                onclick="switchTab('categories')">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="text-3xl font-bold text-gray-800">{{ categories|length }}</h3>
+                        <p class="text-gray-500">Categories</p>
+                    </div>
+                    <div class="bg-accent/10 p-3 rounded-full text-accent">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs Navigation -->
+        <div class="flex space-x-6 mb-6 border-b border-gray-200">
+            <button onclick="switchTab('products')" id="tab-products"
+                class="tab-btn active pb-3 border-b-2 border-primary text-primary font-bold transition-colors">
+                Products
+            </button>
+            <button onclick="switchTab('categories')" id="tab-categories"
+                class="tab-btn pb-3 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium transition-colors">
+                Categories
+            </button>
+        </div>
+
+        <!-- Products Content -->
+        <div id="content-products" class="tab-content transition-opacity duration-300">
+            <div class="bg-white rounded-xl shadow overflow-hidden">
+                <div
+                    class="px-6 py-4 border-b border-gray-100 flex flex-col md:flex-row justify-between items-center bg-gray-50/50 gap-4">
+                    <h3 class="text-lg font-bold text-gray-700">Product Catalog</h3>
+                    <button class="btn-primary py-2 px-4 text-sm flex items-center" onclick="openAddProductModal()">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        Add Product
+                    </button>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-50 text-gray-600 text-sm uppercase tracking-wider">
+                                <th class="px-6 py-4 font-bold border-b">Code</th>
+                                <th class="px-6 py-4 font-bold border-b">Image</th>
+                                <th class="px-6 py-4 font-bold border-b">Name (Grid)</th>
+                                <th class="px-6 py-4 font-bold border-b">Category</th>
+                                <th class="px-6 py-4 font-bold border-b text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            {% for product in products %}
+                            <tr class="hover:bg-gray-50/50 transition-colors">
+                                <td class="px-6 py-4 font-mono font-bold text-primary">{{ product.code }}</td>
+                                <td class="px-6 py-4">
+                                    <img src="{{ product.image if product.image else '/static/img/logo.png' }}"
+                                        class="h-10 w-10 object-cover rounded bg-secondary">
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="font-bold text-gray-800">{{ product.name_en }}</div>
+                                    <div class="text-xs text-gray-500">{{ product.name_ar }}</div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    {% if product.category %}
+                                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">{{
+                                        product.category.name_en }}</span>
+                                    {% else %}
+                                    <span class="text-gray-400 text-xs">Uncategorized</span>
+                                    {% endif %}
+                                </td>
+                                <td class="px-6 py-4 text-right flex justify-end space-x-2">
+                                    <button onclick="openEditProductModal({
+                                        id: '{{ product.id }}',
+                                        name_en: '{{ product.name_en }}', name_ar: '{{ product.name_ar }}',
+                                        code: '{{ product.code }}', weight: '{{ product.weight }}',
+                                        category_id: '{{ product.category_id }}',
+                                        description_en: '{{ product.description_en }}', description_ar: '{{ product.description_ar }}'
+                                    })" class="text-blue-500 hover:text-blue-700 p-2 rounded hover:bg-blue-50 transition"
+                                        title="Edit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                        </svg>
+                                    </button>
+                                    <form action="/admin/products/delete/{{ product.id }}" method="POST"
+                                        onsubmit="return confirm('Delete {{ product.name_en }}?');" class="inline">
+                                        <button type="submit"
+                                            class="text-red-400 hover:text-red-600 p-2 rounded hover:bg-red-50 transition"
+                                            title="Delete">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categories Content -->
+        <div id="content-categories" class="tab-content hidden transition-opacity duration-300">
+            <div class="bg-white rounded-xl shadow overflow-hidden">
+                <div
+                    class="px-6 py-4 border-b border-gray-100 flex flex-col md:flex-row justify-between items-center bg-gray-50/50 gap-4">
+                    <h3 class="text-lg font-bold text-gray-700">Category Management</h3>
+                    <button class="btn-secondary py-2 px-4 text-sm flex items-center" onclick="openAddCategoryModal()">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        Add Category
+                    </button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-50 text-gray-600 text-sm uppercase tracking-wider">
+                                <th class="px-6 py-4 font-bold border-b">ID</th>
+                                <th class="px-6 py-4 font-bold border-b">Name (English)</th>
+                                <th class="px-6 py-4 font-bold border-b">Name (Arabic)</th>
+                                <th class="px-6 py-4 font-bold border-b">Slug</th>
+                                <th class="px-6 py-4 font-bold border-b text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            {% for cat in categories %}
+                            <tr class="hover:bg-gray-50/50 transition-colors">
+                                <td class="px-6 py-4 text-gray-500 font-mono">#{{ cat.id }}</td>
+                                <td class="px-6 py-4 font-bold">{{ cat.name_en }}</td>
+                                <td class="px-6 py-4 font-arabic">{{ cat.name_ar }}</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">{{ cat.slug }}</td>
+                                <td class="px-6 py-4 text-right flex justify-end space-x-2">
+                                    <button
+                                        onclick="openEditCategoryModal({ id: '{{ cat.id }}', name_en: '{{ cat.name_en }}', name_ar: '{{ cat.name_ar }}', slug: '{{ cat.slug }}' })"
+                                        class="text-blue-500 hover:text-blue-700 p-2 rounded hover:bg-blue-50 transition"
+                                        title="Edit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                        </svg>
+                                    </button>
+                                    <form action="/admin/categories/delete/{{ cat.id }}" method="POST"
+                                        onsubmit="return confirm('Delete Category {{ cat.name_en }}? This will delete all associated products!');"
+                                        class="inline">
+                                        <button type="submit"
+                                            class="text-red-400 hover:text-red-600 p-2 rounded hover:bg-red-50 transition"
+                                            title="Delete">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Product Modal -->
+<div id="add-product-modal" class="fixed inset-0 z-50 hidden">
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm" onclick="closeModal('add-product-modal')"></div>
+    <div class="fixed inset-0 flex items-center justify-center p-4">
+        <div
+            class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto transform scale-100 transition-transform">
+            <div class="px-6 py-4 border-b flex justify-between items-center sticky top-0 bg-white z-10">
+                <h3 class="text-lg font-bold">Add New Product</h3>
+                <button onclick="closeModal('add-product-modal')" class="text-gray-400 hover:text-gray-600"><svg
+                        class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg></button>
+            </div>
+            <form action="/admin/products/add" method="POST" enctype="multipart/form-data" class="p-6 space-y-4">
+                <!-- Form Fields -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div><label class="block text-sm font-bold text-gray-700 mb-1">Name (EN)</label><input type="text"
+                            name="name_en" required class="input-field"></div>
+                    <div><label class="block text-sm font-bold text-gray-700 mb-1">Name (AR)</label><input type="text"
+                            name="name_ar" required class="input-field text-right" dir="rtl"></div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div><label class="block text-sm font-bold text-gray-700 mb-1">Code</label><input type="text"
+                            name="code" required class="input-field"></div>
+                    <div><label class="block text-sm font-bold text-gray-700 mb-1">Weight</label><input type="text"
+                            name="weight" required class="input-field" placeholder="e.g. 1kg"></div>
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Category</label>
+                    <select name="category_id" required class="input-field bg-white">
+                        <option value="" disabled selected>Select Category</option>
+                        {% for cat in categories %}
+                        <option value="{{ cat.id }}">{{ cat.name_en }} / {{ cat.name_ar }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div><label class="block text-sm font-bold text-gray-700 mb-1">Description (EN)</label><textarea
+                            name="description_en" rows="3" class="input-field"></textarea></div>
+                    <div><label class="block text-sm font-bold text-gray-700 mb-1">Description (AR)</label><textarea
+                            name="description_ar" rows="3" class="input-field text-right" dir="rtl"></textarea></div>
+                </div>
+                <div><label class="block text-sm font-bold text-gray-700 mb-1">Image</label><input type="file"
+                        name="image" accept="image/*" class="input-field p-1"></div>
+                <button type="submit" class="btn-primary w-full">Save Product</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Product Modal -->
+<div id="edit-product-modal" class="fixed inset-0 z-50 hidden">
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm" onclick="closeModal('edit-product-modal')"></div>
+    <div class="fixed inset-0 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="px-6 py-4 border-b flex justify-between items-center sticky top-0 bg-white z-10">
+                <h3 class="text-lg font-bold text-blue-600">Edit Product</h3>
+                <button onclick="closeModal('edit-product-modal')" class="text-gray-400 hover:text-gray-600"><svg
+                        class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg></button>
+            </div>
+            <form id="edit-product-form" method="POST" enctype="multipart/form-data" class="p-6 space-y-4">
+                <!-- Fields populated via JS -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div><label class="block text-sm font-bold text-gray-700 mb-1">Name (EN)</label><input type="text"
+                            id="edit-name-en" name="name_en" required class="input-field"></div>
+                    <div><label class="block text-sm font-bold text-gray-700 mb-1">Name (AR)</label><input type="text"
+                            id="edit-name-ar" name="name_ar" required class="input-field text-right" dir="rtl"></div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div><label class="block text-sm font-bold text-gray-700 mb-1">Code</label><input type="text"
+                            id="edit-code" name="code" required class="input-field"></div>
+                    <div><label class="block text-sm font-bold text-gray-700 mb-1">Weight</label><input type="text"
+                            id="edit-weight" name="weight" required class="input-field"></div>
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Category</label>
+                    <select id="edit-category" name="category_id" required class="input-field bg-white">
+                        {% for cat in categories %}
+                        <option value="{{ cat.id }}">{{ cat.name_en }} / {{ cat.name_ar }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div><label class="block text-sm font-bold text-gray-700 mb-1">Description (EN)</label><textarea
+                            id="edit-desc-en" name="description_en" rows="3" class="input-field"></textarea></div>
+                    <div><label class="block text-sm font-bold text-gray-700 mb-1">Description (AR)</label><textarea
+                            id="edit-desc-ar" name="description_ar" rows="3" class="input-field text-right"
+                            dir="rtl"></textarea></div>
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Replace Image (Optional)</label>
+                    <input type="file" name="image" accept="image/*" class="input-field p-1">
+                </div>
+                <button type="submit"
+                    class="bg-blue-600 text-white w-full py-3 rounded-lg font-bold hover:bg-blue-700">Update
+                    Product</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Add Category Modal -->
+<div id="add-category-modal" class="fixed inset-0 z-50 hidden">
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm" onclick="closeModal('add-category-modal')"></div>
+    <div class="fixed inset-0 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md">
+            <div class="px-6 py-4 border-b flex justify-between items-center bg-gray-50 rounded-t-xl">
+                <h3 class="text-lg font-bold">Add Category</h3>
+                <button onclick="closeModal('add-category-modal')" class="text-gray-400 hover:text-gray-600"><svg
+                        class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg></button>
+            </div>
+            <form action="/admin/categories/add" method="POST" class="p-6 space-y-4">
+                <div><label class="block text-sm font-bold text-gray-700 mb-1">Name (EN)</label><input type="text"
+                        name="name_en" required class="input-field"></div>
+                <div><label class="block text-sm font-bold text-gray-700 mb-1">Name (AR)</label><input type="text"
+                        name="name_ar" required class="input-field text-right" dir="rtl"></div>
+                <div><label class="block text-sm font-bold text-gray-700 mb-1">Slug (URL)</label><input type="text"
+                        name="slug" required class="input-field" placeholder="e.g. raw-materials"></div>
+                <button type="submit" class="btn-primary w-full">Create Category</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Category Modal -->
+<div id="edit-category-modal" class="fixed inset-0 z-50 hidden">
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm" onclick="closeModal('edit-category-modal')"></div>
+    <div class="fixed inset-0 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md">
+            <div class="px-6 py-4 border-b flex justify-between items-center bg-blue-50 rounded-t-xl">
+                <h3 class="text-lg font-bold text-blue-700">Edit Category</h3>
+                <button onclick="closeModal('edit-category-modal')" class="text-gray-400 hover:text-gray-600"><svg
+                        class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg></button>
+            </div>
+            <form id="edit-category-form" method="POST" class="p-6 space-y-4">
+                <div><label class="block text-sm font-bold text-gray-700 mb-1">Name (EN)</label><input type="text"
+                        id="edit-cat-name-en" name="name_en" required class="input-field"></div>
+                <div><label class="block text-sm font-bold text-gray-700 mb-1">Name (AR)</label><input type="text"
+                        id="edit-cat-name-ar" name="name_ar" required class="input-field text-right" dir="rtl"></div>
+                <div><label class="block text-sm font-bold text-gray-700 mb-1">Slug (URL)</label><input type="text"
+                        id="edit-cat-slug" name="slug" required class="input-field"></div>
+                <button type="submit"
+                    class="bg-blue-600 text-white w-full py-3 rounded-lg font-bold hover:bg-blue-700">Update
+                    Category</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Tab Switching Logic
+    function switchTab(tabName) {
+        // Classes for Active/Inactive Tabs
+        const activeClasses = ['border-primary', 'text-primary', 'border-b-2'];
+        const inactiveClasses = ['border-transparent', 'text-gray-500', 'border-b-2'];
+
+        // Reset all tabs
+        ['products', 'categories'].forEach(t => {
+            const btn = document.getElementById(`tab-${t}`);
+            const content = document.getElementById(`content-${t}`);
+
+            if (btn && content) {
+                btn.classList.remove(...activeClasses);
+                btn.classList.add(...inactiveClasses);
+                content.classList.add('hidden');
+            }
+        });
+
+        // Activate selected tab
+        const activeBtn = document.getElementById(`tab-${tabName}`);
+        const activeContent = document.getElementById(`content-${tabName}`);
+
+        if (activeBtn && activeContent) {
+            activeBtn.classList.remove(...inactiveClasses);
+            activeBtn.classList.add(...activeClasses);
+            activeContent.classList.remove('hidden');
+        }
+    }
+
+    // Modal Generic Logic
+    function closeModal(modalId) {
+        document.getElementById(modalId).classList.add('hidden');
+    }
+
+    // Product Modals
+    function openAddProductModal() {
+        document.getElementById('add-product-modal').classList.remove('hidden');
+    }
+
+    function openEditProductModal(data) {
+        const modal = document.getElementById('edit-product-modal');
+        const form = document.getElementById('edit-product-form');
+
+        // Populate Action URL
+        form.action = `/admin/products/edit/${data.id}`;
+
+        // Populate Fields
+        document.getElementById('edit-name-en').value = data.name_en;
+        document.getElementById('edit-name-ar').value = data.name_ar;
+        document.getElementById('edit-code').value = data.code;
+        document.getElementById('edit-weight').value = data.weight;
+        document.getElementById('edit-category').value = data.category_id;
+        document.getElementById('edit-desc-en').value = data.description_en;
+        document.getElementById('edit-desc-ar').value = data.description_ar;
+
+        modal.classList.remove('hidden');
+    }
+
+    // Category Modals
+    function openAddCategoryModal() {
+        document.getElementById('add-category-modal').classList.remove('hidden');
+    }
+
+    function openEditCategoryModal(data) {
+        const modal = document.getElementById('edit-category-modal');
+        const form = document.getElementById('edit-category-form');
+
+        // Populate Action URL
+        form.action = `/admin/categories/edit/${data.id}`;
+
+        // Populate Fields
+        document.getElementById('edit-cat-name-en').value = data.name_en;
+        document.getElementById('edit-cat-name-ar').value = data.name_ar;
+        document.getElementById('edit-cat-slug').value = data.slug;
+
+        modal.classList.remove('hidden');
+    }
+</script>
+{% endblock %}

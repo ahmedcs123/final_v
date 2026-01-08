@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us | اتصل بنا - The Vines Trading Company{% endblock %}
+
+{% block content %}
+<!-- Hero Section with Animated Slider -->
+<section
+    class="relative text-white py-24 rounded-b-[3rem] shadow-2xl overflow-hidden mb-20 min-h-[500px] flex items-center justify-center group">
+    <!-- Slider Backgrounds -->
+    <div class="absolute inset-0 z-0">
+        <!-- Slide 1: Team/Support -->
+        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-[10000ms] ease-linear scale-100 hover:scale-110 slider-bg"
+            style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); opacity: 1;">
+        </div>
+        <!-- Slide 2: Handshake/Deal -->
+        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-[10000ms] ease-linear scale-100 hover:scale-110 slider-bg"
+            style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80'); opacity: 0;">
+        </div>
+        <!-- Slide 3: Customer Service -->
+        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-[10000ms] ease-linear scale-100 hover:scale-110 slider-bg"
+            style="background-image: url('https://images.unsplash.com/photo-1534536281715-e28d76689b4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80'); opacity: 0;">
+        </div>
+
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/95 to-primary-dark/90 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-black/20"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="container mx-auto px-4 text-center relative z-10 animate-fadeInUp">
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg tracking-tight">
+            <span class="lang-en">Get in Touch</span>
+            <span class="lang-ar">تواصل معنا</span>
+        </h1>
+        <div class="h-1.5 w-32 bg-accent mx-auto rounded-full mb-8 shadow-lg"></div>
+        <p class="text-xl md:text-2xl text-green-50 max-w-3xl mx-auto leading-relaxed drop-shadow-md font-light">
+            <span class="lang-en">We are here to help and answer any question you might have. We look forward to hearing
+                from you.</span>
+            <span class="lang-ar">نحن هنا للمساعدة والإجابة على استفساراتكم. نتطلع لسماع آرائكم والتواصل معكم.</span>
+        </p>
+    </div>
+
+    <!-- Slider Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slider-bg');
+            let currentSlide = 0;
+
+            setInterval(() => {
+                // Fade out current
+                slides[currentSlide].style.opacity = '0';
+                slides[currentSlide].style.zIndex = '0';
+
+                // Advance
+                currentSlide = (currentSlide + 1) % slides.length;
+
+                // Fade in new
+                slides[currentSlide].style.opacity = '1';
+                slides[currentSlide].style.zIndex = '1';
+            }, 5000); // Change every 5 seconds
+        });
+    </script>
+</section>
+
+<div class="container mx-auto px-4 pb-20">
+    <div class="max-w-6xl mx-auto">
+
+        <!-- Contact Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 -mt-32 relative z-20">
+            <!-- Phone -->
+            <a href="tel:+971567822828"
+                class="card p-8 text-center hover:bg-white group transition-all duration-300 border-t-4 border-accent animate-fadeInUp delay-100">
+                <div
+                    class="bg-blue-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 text-blue-600 group-hover:scale-110 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    <span class="lang-en">Call Us</span>
+                    <span class="lang-ar">اتصل بنا</span>
+                </h3>
+                <p class="text-gray-500 font-sans text-lg group-hover:text-primary transition-colors" dir="ltr">+971 56
+                    782 2828</p>
+            </a>
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/971566414722" target="_blank"
+                class="card p-8 text-center hover:bg-white group transition-all duration-300 border-t-4 border-accent animate-fadeInUp delay-200">
+                <div
+                    class="bg-green-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 text-green-600 group-hover:scale-110 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.292 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    <span class="lang-en">WhatsApp</span>
+                    <span class="lang-ar">واتساب</span>
+                </h3>
+                <p class="text-gray-500 font-sans text-lg group-hover:text-primary transition-colors" dir="ltr">+971 56
+                    641 4722</p>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:info@thevines.com"
+                class="card p-8 text-center hover:bg-white group transition-all duration-300 border-t-4 border-accent animate-fadeInUp delay-300">
+                <div
+                    class="bg-orange-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 text-orange-600 group-hover:scale-110 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    <span class="lang-en">Email Us</span>
+                    <span class="lang-ar">راسلنا</span>
+                </h3>
+                <p class="text-gray-500 text-lg group-hover:text-primary transition-colors">info@thevines.com</p>
+            </a>
+        </div>
+
+        <!-- Map & Location Section -->
+        <div
+            class="bg-white rounded-2xl shadow-xl overflow-hidden animate-fadeInUp delay-200 flex flex-col md:flex-row h-[500px]">
+            <!-- Location Info Sidebar -->
+            <div class="md:w-1/3 p-10 bg-gray-50 flex flex-col justify-center relative border-r border-gray-100">
+                <div class="absolute top-0 right-0 p-4 opacity-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-primary" fill="currentColor"
+                        viewBox="0 0 24 24">
+                        <path fill-rule="evenodd"
+                            d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
+
+                <span class="text-accent font-bold tracking-wider uppercase text-sm mb-2">
+                    <span class="lang-en">Visit Us</span>
+                    <span class="lang-ar">تفضل بزيارتنا</span>
+                </span>
+                <h2 class="text-3xl font-bold text-primary-dark mb-6">
+                    <span class="lang-en">Our Location</span>
+                    <span class="lang-ar">موقعنا</span>
+                </h2>
+
+                <div class="space-y-2 text-lg text-gray-600 leading-relaxed">
+                    <p class="font-bold text-gray-800">
+                        <span class="lang-en">The Vines Trading Company</span>
+                        <span class="lang-ar">شركة ذا فاينز للتجارة</span>
+                    </p>
+                    <p>
+                        <span class="lang-en">Lootah Building, Office 206</span>
+                        <span class="lang-ar">بناية لوتاه، مكتب ٢٠٦</span>
+                    </p>
+                    <p>
+                        <span class="lang-en">Umm Ramool</span>
+                        <span class="lang-ar">أم رمول</span>
+                    </p>
+                    <p>
+                        <span class="lang-en">Dubai, United Arab Emirates</span>
+                        <span class="lang-ar">دبي، الإمارات العربية المتحدة</span>
+                    </p>
+                </div>
+
+                <a href="https://maps.google.com/?q=Umm+Ramool+Dubai" target="_blank"
+                    class="mt-8 inline-flex items-center text-primary font-bold hover:text-accent transition-colors group">
+                    <span class="lang-en">Get Directions</span>
+                    <span class="lang-ar">احصل على الاتجاهات</span>
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 ml-2 rtl:mr-2 rtl:ml-0 transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Map Frame -->
+            <div class="md:w-2/3 h-full bg-gray-200">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14436.425502660163!2d55.366666!3d25.233333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5c0000000001%3A0x0!2sUmm%20Ramool%20-%20Dubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sae!4v1620000000000!5m2!1sen!2sae"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

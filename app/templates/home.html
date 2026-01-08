@@ -1,0 +1,335 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Slider Section -->
+<section id="hero-slider" class="relative h-[600px] md:h-[700px] overflow-hidden bg-gray-900 group">
+
+    <!-- Slides Container -->
+    <div id="slides-container" class="relative w-full h-full">
+        <!-- Slide 1 -->
+        <div class="absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100 z-10 slide active">
+            <img src="https://images.unsplash.com/photo-1511381939415-e44015466834?w=1920"
+                class="w-full h-full object-cover" alt="Premium Raw Materials">
+            <div class="absolute inset-0 bg-black/50 flex items-center justify-center text-center px-4">
+                <div class="max-w-4xl slide-content animate-fade-in-up">
+                    <h1 class="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                        <span class="lang-en">Premium Raw Materials</span>
+                        <span class="lang-ar">مواد خام فاخرة</span>
+                    </h1>
+                    <p class="text-xl md:text-3xl text-gray-200 mb-8 drop-shadow-md">
+                        <span class="lang-en">High-quality cocoa, chocolate, and bakery ingredients</span>
+                        <span class="lang-ar">كاكاو وشوكولاتة ومكونات حلويات عالية الجودة</span>
+                    </p>
+                    <a href="/products" class="btn-primary transform hover:scale-105 transition-transform duration-300">
+                        <span class="lang-en">Explore Products</span>
+                        <span class="lang-ar">استكشف المنتجات</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0 slide">
+            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1920"
+                class="w-full h-full object-cover" alt="B2B Excellence">
+            <div class="absolute inset-0 bg-black/50 flex items-center justify-center text-center px-4">
+                <div class="max-w-4xl slide-content">
+                    <h1 class="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                        <span class="lang-en">B2B Excellence</span>
+                        <span class="lang-ar">تميز في خدمات الشركات</span>
+                    </h1>
+                    <p class="text-xl md:text-3xl text-gray-200 mb-8 drop-shadow-md">
+                        <span class="lang-en">Your trusted partner for wholesale food supplies</span>
+                        <span class="lang-ar">شريكك الموثوق في توريد المواد الغذائية بالجملة</span>
+                    </p>
+                    <a href="/products" class="btn-primary transform hover:scale-105 transition-transform duration-300">
+                        <span class="lang-en">Explore Products</span>
+                        <span class="lang-ar">استكشف المنتجات</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0 slide">
+            <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=1920"
+                class="w-full h-full object-cover" alt="Quality Guaranteed">
+            <div class="absolute inset-0 bg-black/50 flex items-center justify-center text-center px-4">
+                <div class="max-w-4xl slide-content">
+                    <h1 class="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                        <span class="lang-en">Quality Guaranteed</span>
+                        <span class="lang-ar">جودة مضمونة</span>
+                    </h1>
+                    <p class="text-xl md:text-3xl text-gray-200 mb-8 drop-shadow-md">
+                        <span class="lang-en">Premium products for professional bakers and confectioners</span>
+                        <span class="lang-ar">منتجات فاخرة للخبازين ومحترفي الحلويات</span>
+                    </p>
+                    <a href="/products" class="btn-primary transform hover:scale-105 transition-transform duration-300">
+                        <span class="lang-en">Explore Products</span>
+                        <span class="lang-ar">استكشف المنتجات</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Remaining slides ... (For brevity I will include first 3 and the loop logic works for all, but user asked for 9 slides. I will rely on my previous knowledge that I already wrote 9. I will write ALL 9 again to be safe and complete). -->
+
+        <!-- Slide 4 -->
+        <div class="absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0 slide">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1920"
+                class="w-full h-full object-cover" alt="Professional Bakery Solutions">
+            <div class="absolute inset-0 bg-black/50 flex items-center justify-center text-center px-4">
+                <div class="max-w-4xl slide-content">
+                    <h1 class="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                        <span class="lang-en">Professional Bakery Solutions</span>
+                        <span class="lang-ar">حلول مخابز احترافية</span>
+                    </h1>
+                    <p class="text-xl md:text-3xl text-gray-200 mb-8 drop-shadow-md">
+                        <span class="lang-en">Complete range of bakery ingredients and supplies</span>
+                        <span class="lang-ar">مجموعة شاملة من مكونات ومستلزمات المخابز</span>
+                    </p>
+                    <a href="/products" class="btn-primary transform hover:scale-105 transition-transform duration-300">
+                        <span class="lang-en">Explore Products</span>
+                        <span class="lang-ar">استكشف المنتجات</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0 slide">
+            <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=1920"
+                class="w-full h-full object-cover" alt="Gourmet Desserts">
+            <div class="absolute inset-0 bg-black/50 flex items-center justify-center text-center px-4">
+                <div class="max-w-4xl slide-content">
+                    <h1 class="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                        <span class="lang-en">Gourmet Desserts</span>
+                        <span class="lang-ar">حلويات فاخرة</span>
+                    </h1>
+                    <p class="text-xl md:text-3xl text-gray-200 mb-8 drop-shadow-md">
+                        <span class="lang-en">Premium ingredients for creating unforgettable desserts</span>
+                        <span class="lang-ar">مكونات ممتازة لإبداع حلويات لا تُنسى</span>
+                    </p>
+                    <a href="/products" class="btn-primary transform hover:scale-105 transition-transform duration-300">
+                        <span class="lang-en">Explore Products</span>
+                        <span class="lang-ar">استكشف المنتجات</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0 slide">
+            <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1920"
+                class="w-full h-full object-cover" alt="Coffee & More">
+            <div class="absolute inset-0 bg-black/50 flex items-center justify-center text-center px-4">
+                <div class="max-w-4xl slide-content">
+                    <h1 class="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                        <span class="lang-en">Coffee & More</span>
+                        <span class="lang-ar">قهوة وأكثر</span>
+                    </h1>
+                    <p class="text-xl md:text-3xl text-gray-200 mb-8 drop-shadow-md">
+                        <span class="lang-en">Premium coffee, nuts, and specialty ingredients</span>
+                        <span class="lang-ar">قهوة ومكسرات ومكونات متخصصة فاخرة</span>
+                    </p>
+                    <a href="/products" class="btn-primary transform hover:scale-105 transition-transform duration-300">
+                        <span class="lang-en">Explore Products</span>
+                        <span class="lang-ar">استكشف المنتجات</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7 -->
+        <div class="absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0 slide">
+            <img src="https://images.unsplash.com/photo-1514517521153-1be72277b32f?w=1920"
+                class="w-full h-full object-cover" alt="Sweet Delights">
+            <div class="absolute inset-0 bg-black/50 flex items-center justify-center text-center px-4">
+                <div class="max-w-4xl slide-content">
+                    <h1 class="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                        <span class="lang-en">Sweet Delights</span>
+                        <span class="lang-ar">حلويات شهية</span>
+                    </h1>
+                    <p class="text-xl md:text-3xl text-gray-200 mb-8 drop-shadow-md">
+                        <span class="lang-en">Colorful candies and confectionery for every occasion</span>
+                        <span class="lang-ar">حلوى ملونة ومخبوزات لكل مناسبة</span>
+                    </p>
+                    <a href="/products" class="btn-primary transform hover:scale-105 transition-transform duration-300">
+                        <span class="lang-en">Explore Products</span>
+                        <span class="lang-ar">استكشف المنتجات</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8 -->
+        <div class="absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0 slide">
+            <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=1920"
+                class="w-full h-full object-cover" alt="Crispy Cookies">
+            <div class="absolute inset-0 bg-black/50 flex items-center justify-center text-center px-4">
+                <div class="max-w-4xl slide-content">
+                    <h1 class="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                        <span class="lang-en">Crispy Cookies</span>
+                        <span class="lang-ar">كوكيز مقرمش</span>
+                    </h1>
+                    <p class="text-xl md:text-3xl text-gray-200 mb-8 drop-shadow-md">
+                        <span class="lang-en">Premium cookie ingredients for perfect baking results</span>
+                        <span class="lang-ar">مكونات كوكيز فاخرة لنتائج خبز مثالية</span>
+                    </p>
+                    <a href="/products" class="btn-primary transform hover:scale-105 transition-transform duration-300">
+                        <span class="lang-en">Explore Products</span>
+                        <span class="lang-ar">استكشف المنتجات</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9 -->
+        <div class="absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0 slide">
+            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=1920"
+                class="w-full h-full object-cover" alt="Fresh Pastries">
+            <div class="absolute inset-0 bg-black/50 flex items-center justify-center text-center px-4">
+                <div class="max-w-4xl slide-content">
+                    <h1 class="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                        <span class="lang-en">Fresh Pastries</span>
+                        <span class="lang-ar">معجنات طازجة</span>
+                    </h1>
+                    <p class="text-xl md:text-3xl text-gray-200 mb-8 drop-shadow-md">
+                        <span class="lang-en">Quality ingredients for artisan pastry creations</span>
+                        <span class="lang-ar">مكونات عالية الجودة لإبداعات المعجنات الفنية</span>
+                    </p>
+                    <a href="/products" class="btn-primary transform hover:scale-105 transition-transform duration-300">
+                        <span class="lang-en">Explore Products</span>
+                        <span class="lang-ar">استكشف المنتجات</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Navigation Arrows -->
+    <button id="left-arrow"
+        class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition z-20 backdrop-blur-sm border border-white/20">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+    </button>
+    <button id="right-arrow"
+        class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition z-20 backdrop-blur-sm border border-white/20">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+    </button>
+
+    <!-- Indicators -->
+    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+        {% for i in range(9) %}
+        <button
+            class="slide-dot w-3 h-3 bg-white/50 rounded-full transition-all duration-300 hover:bg-white {% if loop.index0 == 0 %}w-8 bg-white{% endif %} shadow-sm"
+            data-index="{{ loop.index0 }}" aria-label="Go to slide {{ loop.index }}"></button>
+        {% endfor %}
+    </div>
+
+</section>
+
+<!-- Stats Section -->
+<section
+    class="py-16 bg-white shadow-sm relative z-20 -mt-2 mx-4 md:mx-auto max-w-6xl rounded-xl border border-gray-100">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-100 rtl:divide-x-reverse">
+        <div class="p-4 group">
+            <h3 class="text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">500+</h3>
+            <p class="text-gray-600 font-medium lang-en">Happy Clients</p>
+            <p class="text-gray-600 font-medium lang-ar">عميل راضٍ</p>
+        </div>
+        <div class="p-4 group">
+            <h3 class="text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">1000+</h3>
+            <p class="text-gray-600 font-medium lang-en">Premium Products</p>
+            <p class="text-gray-600 font-medium lang-ar">منتج فاخر</p>
+        </div>
+        <div class="p-4 group">
+            <h3 class="text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">10+</h3>
+            <p class="text-gray-600 font-medium lang-en">Years Experience</p>
+            <p class="text-gray-600 font-medium lang-ar">سنوات خبرة</p>
+        </div>
+        <div class="p-4 group">
+            <h3 class="text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">24/7</h3>
+            <p class="text-gray-600 font-medium lang-en">Customer Support</p>
+            <p class="text-gray-600 font-medium lang-ar">دعم العملاء</p>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="py-20 bg-secondary">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center text-primary mb-12 relative inline-block w-full">
+            <span class="lang-en relative z-10">Why Choose Us</span>
+            <span class="lang-ar relative z-10">لماذا تختارنا</span>
+            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-accent/30 -z-0"></span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <!-- Quality -->
+            <div class="card p-8 text-center">
+                <div
+                    class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-primary-dark">
+                    <span class="lang-en">Exceptional Quality</span>
+                    <span class="lang-ar">جودة استثنائية</span>
+                </h3>
+                <p class="text-gray-600 mb-2">
+                    <span class="lang-en">Carefully selected products from trusted global suppliers.</span>
+                    <span class="lang-ar">منتجات مختارة بعناية من موردين عالميين موثوقين.</span>
+                </p>
+            </div>
+
+            <!-- Partner -->
+            <div class="card p-8 text-center">
+                <div
+                    class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-primary-dark">
+                    <span class="lang-en">Trusted Partner</span>
+                    <span class="lang-ar">شريك موثوق</span>
+                </h3>
+                <p class="text-gray-600 mb-2">
+                    <span class="lang-en">Building long-term relationships with our clients.</span>
+                    <span class="lang-ar">بناء علاقات طويلة الأمد مع عملائنا.</span>
+                </p>
+            </div>
+
+            <!-- Delivery -->
+            <div class="card p-8 text-center">
+                <div
+                    class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-primary-dark">
+                    <span class="lang-en">Fast Delivery</span>
+                    <span class="lang-ar">توصيل سريع</span>
+                </h3>
+                <p class="text-gray-600 mb-2">
+                    <span class="lang-en">Professional delivery service on time.</span>
+                    <span class="lang-ar">خدمة توصيل احترافية في الوقت المحدد.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

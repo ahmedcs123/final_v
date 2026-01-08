@@ -1,0 +1,277 @@
+{% extends "base.html" %}
+
+{% block title %}About Us | من نحن - The Vines Trading Company{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section
+    class="relative h-[60vh] min-h-[500px] flex items-center justify-center bg-gray-900 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 group">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-[10000ms] ease-linear scale-100 group-hover:scale-110"
+            style="background-image: url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80');">
+        </div>
+        <div class="absolute inset-0 bg-black/60"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-transparent to-transparent"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="container mx-auto px-4 text-center relative z-10 animate-fadeInUp">
+        <span
+            class="text-accent font-bold tracking-[0.2em] uppercase text-sm mb-4 block opacity-0 animate-fadeIn delay-300 fill-mode-forwards">
+            <span class="lang-en">Est. 2024</span>
+            <span class="lang-ar">تأسست ٢٠٢٤</span>
+        </span>
+        <h1 class="text-6xl md:text-8xl font-bold text-white mb-6 drop-shadow-lg">
+            <span class="lang-en">Our Story</span>
+            <span class="lang-ar">قصتنا</span>
+        </h1>
+        <div class="h-1.5 w-32 bg-accent mx-auto rounded-full mb-8 shadow-[0_0_15px_rgba(var(--color-accent),0.5)]">
+        </div>
+        <p class="text-xl md:text-3xl text-gray-200 max-w-3xl mx-auto font-light leading-relaxed">
+            <span class="lang-en">Passion for quality, dedication to taste.</span>
+            <span class="lang-ar">شغف بالجودة، وإخلاص للمذاق.</span>
+        </p>
+    </div>
+</section>
+
+<!-- Our Story Section (Split Layout) -->
+<section class="container mx-auto px-4 mb-24">
+    <div class="flex flex-col md:flex-row items-center gap-16">
+        <!-- Image Side -->
+        <div class="w-full md:w-1/2 relative animate-fadeInUp delay-200">
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl h-[600px] group">
+                <!-- Slide 1: Coffee -->
+                <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out story-slider-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1922&q=80'); opacity: 1;">
+                </div>
+                <!-- Slide 2: Nuts -->
+                <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out story-slider-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1599599810769-bcde5a160d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=1932&q=80'); opacity: 0;">
+                </div>
+                <!-- Slide 3: Sweets/Chocolate -->
+                <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out story-slider-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1511381939415-e44015466834?ixlib=rb-4.0.3&auto=format&fit=crop&w=2172&q=80'); opacity: 0;">
+                </div>
+
+                <div
+                    class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent text-white z-10">
+                    <p class="text-lg font-serif italic transform translate-y-0 transition-transform duration-300">
+                        <span class="lang-en">"Quality is not an act, it is a habit."</span>
+                        <span class="lang-ar">"الجودة ليست فعلاً، بل هي عادة."</span>
+                    </p>
+                </div>
+            </div>
+            <!-- Decorative Element -->
+            <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/20 rounded-full blur-2xl -z-10"></div>
+            <div class="absolute -top-6 -left-6 w-32 h-32 bg-primary/20 rounded-full blur-2xl -z-10"></div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const storySlides = document.querySelectorAll('.story-slider-img');
+                    let currentStorySlide = 0;
+
+                    if (storySlides.length > 0) {
+                        setInterval(() => {
+                            storySlides[currentStorySlide].style.opacity = '0';
+                            currentStorySlide = (currentStorySlide + 1) % storySlides.length;
+                            storySlides[currentStorySlide].style.opacity = '1';
+                        }, 4000);
+                    }
+                });
+            </script>
+        </div>
+
+        <!-- Text Side -->
+        <div class="w-full md:w-1/2 space-y-8 animate-fadeInUp delay-300">
+            <div class="mb-4">
+                <h2 class="text-4xl font-bold text-primary mb-3">
+                    <span class="lang-en">About The Vines</span>
+                    <span class="lang-ar">عن ذا فاينز</span>
+                </h2>
+                <div class="h-1 w-20 bg-accent rounded-full"></div>
+            </div>
+
+            <div class="prose prose-lg text-gray-600 leading-relaxed space-y-6 text-justify">
+                <p class="lang-en">
+                    Welcome to The Vines, your reality source for a great trade experience that elevates your business.
+                    At Vines, we take pride in offering a diverse range of premium coffee, nuts, chocolate, and sweets,
+                    meticulously curated for discerning palates.
+                </p>
+                <p class="lang-ar">
+                    مرحباً بكم في ذا فاينز، مصدركم الأمثل لتجربة تجارية مميزة ترتقي بأعمالكم. في ذا فاينز، نفخر بتقديم
+                    تشكيلة واسعة من أجود أنواع القهوة والمكسرات والشوكولاتة والحلويات، المختارة بعناية فائقة لتناسب
+                    أذواقكم الرفيعة.
+                </p>
+
+                <p class="lang-en pl-4 border-l-4 border-accent">
+                    Our commitment revolves around two core principles: <strong>quality</strong> and <strong>customer
+                        satisfaction</strong>.
+                    We strive to deliver products that not only meet but exceed your expectations, ensuring each
+                    indulgence is a moment of pure delight.
+                </p>
+                <p class="lang-ar border-r-4 border-accent pr-4">
+                    يرتكز التزامنا على مبدأين أساسيين: <strong>الجودة</strong> و <strong>رضا العملاء</strong>.
+                    نسعى جاهدين لتقديم منتجات لا تلبي توقعاتكم فحسب، بل تتجاوزها أيضاً، مما يضمن أن تكون كل تجربة لحظة
+                    من المتعة الخالصة.
+                </p>
+
+                <p class="lang-en">
+                    Driven by a passion for aesthetics and an appreciation for authentic flavors, we are pleased to show
+                    you our best products in this field.
+                </p>
+                <p class="lang-ar">
+                    انطلاقاً من شغفنا بالجمال وتقديرنا للنكهات الأصيلة، يسعدنا أن نعرض لكم أفضل منتجاتنا في هذا المجال.
+                </p>
+            </div>
+
+            <a href="/products"
+                class="inline-flex items-center gap-2 text-primary font-bold hover:text-accent transition-colors group text-lg mt-4">
+                <span class="group-hover:underline underline-offset-4">
+                    <span class="lang-en">View our Collection</span>
+                    <span class="lang-ar">شاهد مجموعتنا</span>
+                </span>
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 rtl:rotate-180 transform group-hover:translate-x-1 transition-transform" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Values Section -->
+<section class="bg-gray-50 py-24 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5"
+        style="background-image: radial-gradient(#2c3e50 1px, transparent 1px); background-size: 20px 20px;"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-primary mb-4">
+                <span class="lang-en">Our Core Values</span>
+                <span class="lang-ar">قيمنا الجوهرية</span>
+            </h2>
+            <p class="text-gray-500 max-w-xl mx-auto">
+                <span class="lang-en">The principles that guide every decision we make.</span>
+                <span class="lang-ar">المبادئ التي توجه كل خطوة نخطوها.</span>
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <!-- Value 1 -->
+            <div
+                class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 group text-center relative overflow-hidden">
+                <div
+                    class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
+                </div>
+                <div
+                    class="bg-blue-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 text-4xl shadow-inner group-hover:scale-110 transition-transform bg-gradient-to-br from-blue-50 to-blue-100">
+                    💎
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-primary-dark">
+                    <span class="lang-en">Quality</span>
+                    <span class="lang-ar">الجودة</span>
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                    <span class="lang-en">Meticulously curated premium products for the finest experience.</span>
+                    <span class="lang-ar">نختار أفضل المنتجات بعناية فائقة لتجربة لا تضاهى.</span>
+                </p>
+            </div>
+
+            <!-- Value 2 -->
+            <div
+                class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 group text-center relative overflow-hidden">
+                <div
+                    class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
+                </div>
+                <div
+                    class="bg-red-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 text-4xl shadow-inner group-hover:scale-110 transition-transform bg-gradient-to-br from-red-50 to-red-100">
+                    ❤️
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-primary-dark">
+                    <span class="lang-en">Satisfaction</span>
+                    <span class="lang-ar">الرضا</span>
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                    <span class="lang-en">Exceeding expectations is our standard, not just a goal.</span>
+                    <span class="lang-ar">تجاوز التوقعات هو معيارنا، وليس مجرد هدف نسعى إليه.</span>
+                </p>
+            </div>
+
+            <!-- Value 3 -->
+            <div
+                class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 group text-center relative overflow-hidden">
+                <div
+                    class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
+                </div>
+                <div
+                    class="bg-yellow-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 text-4xl shadow-inner group-hover:scale-110 transition-transform bg-gradient-to-br from-yellow-50 to-yellow-100">
+                    🌟
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-primary-dark">
+                    <span class="lang-en">Authenticity</span>
+                    <span class="lang-ar">الأصالة</span>
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                    <span class="lang-en">True authentic flavors delivered with genuine craftsmanship.</span>
+                    <span class="lang-ar">نكهات أصلية حقيقية نقدمها ببراعة وحرفية متقنة.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Premium Products text -->
+<section class="py-24 relative">
+    <div class="container mx-auto px-4 max-w-6xl">
+        <div class="bg-primary text-white rounded-3xl p-10 md:p-16 shadow-2xl relative overflow-hidden isolate">
+            <!-- Decorative Backdrops -->
+            <div class="absolute -right-20 -top-20 w-96 h-96 bg-accent/20 rounded-full blur-3xl mix-blend-overlay">
+            </div>
+            <div class="absolute -left-20 -bottom-20 w-96 h-96 bg-white/10 rounded-full blur-3xl mix-blend-overlay">
+            </div>
+
+            <div class="relative z-10 text-center max-w-4xl mx-auto space-y-8">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">
+                    <span class="lang-en">A Journey of Taste</span>
+                    <span class="lang-ar">رحلة من المذاق</span>
+                </h2>
+
+                <div class="text-lg md:text-xl text-gray-200 leading-relaxed space-y-6">
+                    <p class="lang-en drop-shadow-md">
+                        Our products embody a perfect blend of craftsmanship, innovation, and culinary finesse. We
+                        understand that every sip and bite should be a journey, and we invite you to embark on this
+                        flavorful adventure with us.
+                    </p>
+                    <p class="lang-ar drop-shadow-md">
+                        تجسد منتجاتنا مزيجاً مثالياً من الحرفية والابتكار والبراعة في فن الطهي. ندرك أن كل رشفة ولقمة هي
+                        رحلة، وندعوكم للانضمام إلينا في هذه المغامرة الممتعة.
+                    </p>
+                    <p class="lang-en font-serif italic text-accent text-2xl pt-4">
+                        "Indulge your senses, savor the moment."
+                    </p>
+                    <p class="lang-ar font-serif italic text-accent text-2xl">
+                        "دلل حواسك، وتذوق اللحظة."
+                    </p>
+                </div>
+
+                <div class="pt-8">
+                    <a href="/products"
+                        class="bg-white text-primary font-bold py-4 px-10 rounded-full hover:bg-gray-100 hover:scale-105 transition-all shadow-lg inline-flex items-center gap-3">
+                        <span class="lang-en">Explore Our Catalog</span>
+                        <span class="lang-ar">استكشف الكتالوج</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rtl:rotate-180" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
