@@ -13,11 +13,15 @@ def seed_data():
 
     # Define Categories
     categories_data = [
-        {"name_en": "Raw Materials", "name_ar": "المواد الخام", "slug": "raw-materials"},
         {"name_en": "Chocolates", "name_ar": "الشوكولاتة", "slug": "chocolates"},
+        {"name_en": "Coffee", "name_ar": "القهوة", "slug": "coffee"},
+        {"name_en": "Flour", "name_ar": "الدقيق", "slug": "flour"},
+        {"name_en": "Sweets", "name_ar": "الحلويات", "slug": "sweets"},
+        {"name_en": "Frozen Meat", "name_ar": "اللحوم المجمدة", "slug": "frozen-meat"},
+        {"name_en": "Frozen Chicken", "name_ar": "الدجاج المجمد", "slug": "frozen-chicken"},
+        {"name_en": "Sugar", "name_ar": "السكر", "slug": "sugar"},
+        {"name_en": "Raw Materials", "name_ar": "المواد الخام", "slug": "raw-materials"},
         {"name_en": "Creams & Fillings", "name_ar": "الكريمات والحشوات", "slug": "creams-fillings"},
-        {"name_en": "Cake Decoration", "name_ar": "زينة الكيك", "slug": "cake-decoration"},
-        {"name_en": "Ice Cream & Gelato", "name_ar": "الآيس كريم والجيلاتو", "slug": "ice-cream-gelato"},
         {"name_en": "Beverages", "name_ar": "المشروبات", "slug": "beverages"},
     ]
 
@@ -69,6 +73,60 @@ def seed_data():
                 weight="2 KG",
                 description_en="High quality base for vanilla gelato.",
                 description_ar="قاعدة عالية الجودة لجيلاتو الفانيليا."
+            ),
+            models.Product(
+                category_id=cats.get("coffee"),
+                name_en="Premium Arabica Coffee Beans",
+                name_ar="حبوب قهوة أرابيكا فاخرة",
+                code="COF-001",
+                weight="1 KG",
+                description_en="100% Arabica beans, medium roast.",
+                description_ar="حبوب أرابيكا 100%، تحميص متوسط."
+            ),
+            models.Product(
+                category_id=cats.get("flour"),
+                name_en="All-Purpose Flour",
+                name_ar="دقيق متعدد الاستخدامات",
+                code="FLR-101",
+                weight="50 KG",
+                description_en="High quality flour for all baking needs.",
+                description_ar="دقيق عالي الجودة لجميع احتياجات الخبز."
+            ),
+            models.Product(
+                category_id=cats.get("sweets"),
+                name_en="Assorted Gummies",
+                name_ar="تشكيلة جيلي",
+                code="SWT-005",
+                weight="5 KG",
+                description_en="Colorful fruit flavored gummy candies.",
+                description_ar="حلوى جيلي بنكهات الفواكه الملونة."
+            ),
+            models.Product(
+                category_id=cats.get("frozen-meat"),
+                name_en="Premium Beef Tenderloin",
+                name_ar="فيليه بقري فاخر",
+                code="MT-012",
+                weight="20 KG",
+                description_en="High quality frozen beef tenderloin.",
+                description_ar="فيليه بقري مجمد عالي الجودة."
+            ),
+            models.Product(
+                category_id=cats.get("frozen-chicken"),
+                name_en="Whole Frozen Chicken 1000g",
+                name_ar="دجاج مجمد كامل 1000 جم",
+                code="CHK-100",
+                weight="10 KG Box",
+                description_en="Grade A frozen whole chicken.",
+                description_ar="دجاج كامل مجمد درجة أولى."
+            ),
+            models.Product(
+                category_id=cats.get("sugar"),
+                name_en="Fine White Sugar",
+                name_ar="سكر أبيض ناعم",
+                code="SUG-001",
+                weight="50 KG",
+                description_en="Refined white sugar for baking and sweetening.",
+                description_ar="سكر أبيض مكرر للخبز والتحلية."
             )
         ]
         for p in products:

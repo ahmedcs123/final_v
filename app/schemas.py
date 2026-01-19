@@ -26,7 +26,7 @@ class ProductBase(BaseModel):
     weight: str
     description_en: Optional[str] = None
     description_ar: Optional[str] = None
-    image: Optional[str] = "placeholder.jpg"
+    image: Optional[str] = None
 
 class ProductCreate(ProductBase):
     pass

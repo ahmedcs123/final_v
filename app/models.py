@@ -26,7 +26,7 @@ class Product(Base):
     weight = Column(String, nullable=False)
     description_en = Column(Text, nullable=True)
     description_ar = Column(Text, nullable=True)
-    image = Column(String, default="placeholder.jpg")
+    image = Column(String, nullable=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
     category = relationship("Category", back_populates="products")
